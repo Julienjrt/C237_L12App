@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Train Tickets here </title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Add New Train Ticket</h2>
+
+    <form action="/addticket" method="POST">
+
+        <label>Train name</label>
+        <input type="text" name="name" required>
+
+        <label>Departure Time</label>
+        <input type="text" name="departure" required>
+
+        <label>Arrival Time</label>
+        <input type="text" name="arrival" required>
+
+        <label>Platform</label>
+        <input type="text" name="platform" required>
+
+        <label>Status</label>
+        <select name="status">
+            <option>On Time</option>
+            <option>Delayed</option>
+        </select>
+
+        <label>Price:</label>
+        <input type="number" step="0.01" name="price" required>
+
+        <button type="submit">Add Ticket</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

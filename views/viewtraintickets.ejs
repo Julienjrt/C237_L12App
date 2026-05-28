@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Train Tickets to buy </title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .ticket{
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        button{
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<h1>Available Train Tickets to Purchase</h1>
+
+<a href="/addticket">
+    <button>Add New Ticket</button>
+</a>
+<a href="/" class="back-btn">⬅ Back Home</a>
+
+<br><br>
+
+<% trains.forEach(train => { %>
+
+<div class="ticket">
+
+    <h2><%= train.name %></h2>
+
+    <p>departure: <%= train.departure %></p>
+
+    <p>arrival: <%= train.arrival %></p>
+
+    <p>platform: <%= train.platform %></p>
+
+    <p>Price: $<%= train.price%></p>
+
+    <!-- BUY BUTTON -->
+    <form action="/buyticket" method="POST">
+
+        <input
+            type="hidden"
+            name="id"
+            value="<%= train.id %>"
+        >
+
+        <button type="submit">
+            Buy Ticket
+        </button>
+
+    </form>
+
+    <br>
+
+    <!-- EDIT BUTTON -->
+    <a href="/edit/<%= train.id %>">
+
+        <button>Edit</button>
+
+    </a>
+
+    <!-- DELETE BUTTON -->
+    <form
+        action="/delete/<%= train.id %>"
+        method="POST" onsubmit="return confirm('Are you sure you want to delete this ticket?');"
+    >
+
+        <button type="submit">
+            Delete
+        </button>
+
+    </form>
+
+</div>
+
+<% }) %>
+
+</body>
+</html>
+

@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Timings</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .train-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .train-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .train-card h2 {
+            margin: 0;
+            color: #0077cc;
+        }
+
+        .timing {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .on-time {
+            background-color: green;
+        }
+
+        .delayed {
+            background-color: red;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">⬅ Back Home</a>
+
+    <h1>Train Timings</h1>
+
+    <div class="train-container">
+
+        <% trains.forEach(train => { %>
+
+            <div class="train-card">
+                <h2><%= train.name %></h2>
+
+                <div class="timing">
+                    Departure: <strong><%= train.departure %></strong>
+                </div>
+
+                <div class="timing">
+                    Arrival: <strong><%= train.arrival %></strong>
+                </div>
+
+                <div class="timing">
+                    Platform: <strong><%= train.platform %></strong>
+                </div>
+
+                <div class="timing">
+                    Status:
+
+                    <% if (train.status === 'On Time') { %>
+                        <span class="status on-time">On Time</span>
+                    <% } else { %>
+                        <span class="status delayed">Delayed</span>
+                    <% } %>
+                </div>
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</body>
+</html>
+
+
